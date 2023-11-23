@@ -16,11 +16,11 @@ public List<Rating> ratingList;
     }
     public boolean addRating(Rating rating){
         for (Rating emailCheck: ratingList) {
-            if(!emailCheck.getEmail().equals(rating.getEmail()))
-                ratingList.add(rating);
+            if(emailCheck.getEmail().equals(rating.getEmail()))
+                return false;
         }
+        ratingList.add(rating);
         return true;
-
     }
     public String getTitle() {
         return title;
@@ -41,7 +41,12 @@ public List<Rating> ratingList;
         for (Rating rating: ratingList) {
             ratingSum +=rating.getRating();
         }
-        averageRating = ratingSum/ratingList.size();
-        return String.format("Book info:%nTitle: %s%nAuthor: %s%n isbn: %s%n Rating: %d", title, author, isbn,averageRating);
+        if(!(ratingList.size() ==0)) {
+            averageRating = ratingSum / ratingList.size();
+        }
+        else {
+            averageRating =0;
+        }
+        return String.format("Book info: Title: %s Author: %s ISBN: %s Rating: %d", title, author, isbn,averageRating);
     }
 }
