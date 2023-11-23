@@ -25,4 +25,5 @@ private int rating;
     public String toString() {
         return String.format("Alias: %s%nEmail: %s%nRating: %d%n",alias,email,rating);
     }
+
 }

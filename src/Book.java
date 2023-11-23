@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private String title;
     private String author;
@@ -48,5 +48,10 @@ public List<Rating> ratingList;
             averageRating =0;
         }
         return String.format("Book info: Title: %s Author: %s ISBN: %s Rating: %d", title, author, isbn,averageRating);
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return Integer.compare(o.ratingList);
     }
 }
